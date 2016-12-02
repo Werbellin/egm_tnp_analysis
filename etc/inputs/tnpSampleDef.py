@@ -1,5 +1,27 @@
 from libPython.tnpClassUtils import tnpSample
 
+cernBox = 'root://eosuser.cern.ch//eos/user/p/ppigard/electron_trees/' 
+cernBox = '/Users/pigard/data/eID/'
+
+Moriond17_v1 = {
+    #'DY_NLO' : tnpSample('DY_NLO', cernBox + 'DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_v1_slim.root', 
+    #                          isMC = True, nEvts = 33584160 ),
+    'DY_madgraph' : tnpSample('DY_madgraph', '/Users/pigard/data/electron_trees/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v2_slim.root', 
+                              isMC = True, nEvts = 33584160 ),
+
+    'sum_rerecoBDEFG_promptHv23' : tnpSample('data_v1', '/Users/pigard/data/electron_trees/sum_rerecoBDEFG_promptHv23_slim.root', lumi = 36),
+#    'data_Run2016B' : tnpSample('data_Run2016B' , cernBox + 'rereco_RunB_v1_slim.root' , lumi = 5.349 ),
+#    'data_Run2016C' : tnpSample('data_Run2016C' , cernBox + '' , lumi = 2.363 ),
+#    'data_Run2016D' : tnpSample('data_Run2016D' , cernBox + '' , lumi = 4.256 ),
+#    'data_Run2016E' : tnpSample('data_Run2016E' , cernBox + '' , lumi = 3.981 ),
+#    'data_Run2016F' : tnpSample('data_Run2016F' , cernBox + '' , lumi = 3.105 ),
+#    'data_Run2016G' : tnpSample('data_Run2016G' , cernBox + 'rereco_RunG_v1_slim.root' , lumi = 7.544 ),
+#    'data_Run2016H' : tnpSample('data_Run2016H' , cernBox + '' , lumi = 6.105 ),
+    }
+
+
+
+
 ### qll stat
 eosDir1 = 'eos/cms/store/group/phys_egamma/tnp/80X/PhoEleIDs/v1/'
 eosDir2 = 'eos/cms/store/group/phys_egamma/tnp/80X/PhoEleIDs/v2/'
