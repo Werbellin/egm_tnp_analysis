@@ -94,10 +94,13 @@ if args.createHists:
         print 'creating histogram for sample '
         sample.dump()
 
-        var = { 'name' : 'pair_mass', 'nbins' : 60, 'min' : 60, 'max': 120 }
+        if not hasattr(tnpConf, 'mass_var_name') :
+            tnpConf.mass_var_name = 'pair_mass'
+
+        var = { 'name' : tnpConf.mass_var_name, 'nbins' : 60, 'min' : 60, 'max': 120 }
 
         if sample.mcTruth: 
-            var = { 'name' : 'pair_mass', 'nbins' : 120, 'min' : 60, 'max': 120 }
+            var = { 'name' : tnpConf.mass_var_name, 'nbins' : 120, 'min' : 60, 'max': 120 }
             
         tnpRoot.makePassFailHistograms( sample, tnpConf.flags[args.flag], tnpBins, var )
     sys.exit(0)
