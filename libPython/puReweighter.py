@@ -27,7 +27,7 @@ puMC = {
 puMCscenario = 'Spring2016MC_PUscenarioV1'
 
 
-puDirEOS = 'eos/cms/store/group/phys_egamma/tnp/80X/76Xids/AllIDs_v0/'
+puDirEOS = 'root://eosuser.cern.ch//eos/cms/store/group/phys_egamma/tnp/80X/76Xids/AllIDs_v0/'
 #### Compute weights for all data epoch specified below
 puDataEpoch = {
     '2016_runB'   : puDirEOS + 'etc/inputs/pileup_runB_2016_63mb.root',
@@ -66,7 +66,7 @@ def reweight( sample, puType = 0  ):
 
 ### create a tree with only weights that will be used as friend tree for reweighting different lumi periods
     print 'Opening mc file: ', sample.path[0]
-    fmc = rt.TFile(sample.path[0],'read')
+    fmc = rt.TFile.Open(sample.path[0],'read')
     tmc = None
     if sample.tnpTree is None:
         dirs = fmc.GetListOfKeys()
@@ -106,9 +106,9 @@ def reweight( sample, puType = 0  ):
  
     for pu in epochKeys:
         fpu = None
-        if   puType == 1 : fpu = rt.TFile(nVtxDataEpoch[pu],'read')
-        elif puType == 2 : fpu = rt.TFile(rhoDataEpoch[pu],'read')
-        else             : fpu = rt.TFile(puDataEpoch[pu],'read')
+        if   puType == 1 : fpu = rt.TFile.Open(nVtxDataEpoch[pu],'read')
+        elif puType == 2 : fpu = rt.TFile.Open(rhoDataEpoch[pu],'read')
+        else             : fpu = rt.TFile.Open(puDataEpoch[pu],'read')
         puDataDist[pu] = fpu.Get('pileup').Clone('puHist_%s' % pu)
         puDataDist[pu].Scale(1./puDataDist[pu].Integral())
         puDataDist[pu].SetDirectory(0)
